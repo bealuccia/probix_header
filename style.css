@@ -1,4 +1,4 @@
-        :root {
+:root {
           --header-bg: #f1f1f1;
           --header-text-color: #000000;
           --link-hover-bg: rgba(255, 255, 255, 0.1);
@@ -1391,21 +1391,34 @@ input:checked + .slider:before {
     }
 }
 
-
-
-
 /* ==========================================================================
-   Dark Theme (Updated & Unified)
+   Dark Theme — Unified Background & Smooth Transitions
    ========================================================================== */
-
-body.dark-theme .site-header {
+body.dark-theme {
   background-color: #2c2c2c;
-}
-body.dark-theme .license-card {
-  background-color: #2f2f2f;
+  color: #e0e0e0;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Typography */
+body.dark-theme .site-header,
+body.dark-theme .mega-menu,
+body.dark-theme .popup-nav-container,
+body.dark-theme .mobile-nav-popup,
+body.dark-theme .license-card,
+body.dark-theme .card-footer,
+body.dark-theme .license-tabs,
+body.dark-theme .cases-mega-menu,
+body.dark-theme .services-mega-menu,
+body.dark-theme .contacts-mega-menu {
+  background-color: #2c2c2c;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark-theme .card-footer,
+body.dark-theme .license-card {
+  border-color: #444;
+}
+
 body.dark-theme h1,
 body.dark-theme h2,
 body.dark-theme h3,
@@ -1422,13 +1435,6 @@ body.dark-theme a:hover {
   color: #a8daff;
 }
 
-/* Header */
-body.dark-theme .site-header {
-  background-color: #2c2c2c;
-  color: #e0e0e0;
-  border-bottom: 1px solid #444;
-}
-
 body.dark-theme .nav-item > a {
   color: #e0e0e0;
 }
@@ -1441,43 +1447,6 @@ body.dark-theme .nav-item > a::after {
   background-color: #4a90e2;
 }
 
-/* Mega Menu */
-body.dark-theme .mega-menu {
-  background-color: #2c2c2c;
-  color: #cccccc;
-  border-top: 3px solid #4a90e2;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-body.dark-theme .mega-menu a:hover {
-  background-color: rgba(74, 144, 226, 0.15);
-  color: #ffffff;
-}
-
-/* Buttons */
-body.dark-theme .consultation-button,
-body.dark-theme .license-card .buy-button,
-body.dark-theme .view-all-cases-button {
-  background: linear-gradient(45deg, #007BFF, #009dff);
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-}
-body.dark-theme .consultation-button:hover,
-body.dark-theme .license-card .buy-button:hover,
-body.dark-theme .view-all-cases-button:hover {
-  background: linear-gradient(45deg, #009dff, #007BFF);
-}
-
-/* Cards */
-body.dark-theme .license-card {
-  background-color: #2f2f2f;
-  border-color: #444;
-}
-body.dark-theme .license-card h3,
-body.dark-theme .license-card .price {
-  color: #4a90e2;
-}
-
-/* Forms */
 body.dark-theme input,
 body.dark-theme select,
 body.dark-theme textarea {
@@ -1486,11 +1455,16 @@ body.dark-theme textarea {
   border: 1px solid #555;
 }
 
-/* Mobile Popup */
-body.dark-theme .mobile-nav-popup {
-  background-color: rgba(30, 30, 30, 0.95);
+body.dark-theme .consultation-button,
+body.dark-theme .license-card .buy-button,
+body.dark-theme .view-all-cases-button {
+  background: linear-gradient(45deg, #007BFF, #009dff);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-body.dark-theme .popup-nav-container {
-  background-color: #2c2c2c;
-  color: #e0e0e0;
+body.dark-theme .consultation-button:hover,
+body.dark-theme .license-card .buy-button:hover,
+body.dark-theme .view-all-cases-button:hover {
+  background: linear-gradient(45deg, #009dff, #007BFF);
 }
