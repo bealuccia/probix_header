@@ -1744,22 +1744,3 @@ body.dark-theme .switch-label .sun,
       color: #4a90e2 !important;
     }
 
-
-
-/* === Logo theme switching support === */
-
-.logo-img.light-logo {
-  display: block;
-}
-
-body.dark-theme .logo-img.light-logo {
-  display: none;
-}
-
-.logo-img.dark-logo {
-  display: none;
-}
-
-body.dark-theme .logo-img.dark-logo {
-  display: block;
-}
