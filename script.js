@@ -634,12 +634,3 @@ document.addEventListener('DOMContentLoaded', function () {
         updateCorporatePrice();
     }
 });
-
-
-window.addEventListener('message', function (e) {
-    if (!e.origin.includes('github.io')) return;
-    const iframe = document.getElementById('probixFrame');
-    if (iframe && e.data && e.data.type === 'resize' && e.data.height) {
-        iframe.style.height = e.data.height + 'px';
-    }
-});
