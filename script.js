@@ -1,271 +1,281 @@
-        function initProbixHeader() {
-            const header = document.querySelector('.site-header');
-            try {
-                if (header) header.style.backgroundColor = 'orange'; // Script started
+document.addEventListener('DOMContentLoaded', function () {
+    const lightLogo = document.querySelector('.logo-img.light-logo');
+    const darkLogo = document.querySelector('.logo-img.dark-logo');
+    const navToggle = document.querySelector('.nav-toggle');
+    const mobileNavPopup = document.getElementById('mobileNavPopup');
+    const popupCloseButton = document.querySelector('.mobile-popup-close');
+    const body = document.body;
+    const header = document.querySelector('.site-header');
 
-                const lightLogo = document.querySelector('.logo-img.light-logo');
-                const darkLogo = document.querySelector('.logo-img.dark-logo');
-                const navToggle = document.querySelector('.nav-toggle');
-                const mobileNavPopup = document.getElementById('mobileNavPopup');
-                const popupCloseButton = document.querySelector('.mobile-popup-close');
-                const body = document.body;
-                const themeSwitches = document.querySelectorAll('.theme-switch-checkbox');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    const themeSwitches = document.querySelectorAll('.theme-switch-checkbox');
 
-                function updateLogoTheme(isDark) {
-                    if (!lightLogo || !darkLogo) return;
-                    if (isDark) {
-                        lightLogo.classList.add('hidden');
-                        darkLogo.classList.remove('hidden');
-                    } else {
-                        lightLogo.classList.remove('hidden');
-                        darkLogo.classList.add('hidden');
+    
+
+    
+
+    navToggle?.addEventListener('click', () => {
+        mobileNavPopup.classList.add('popup-active');
+        body.classList.add('popup-open');
+        navToggle.setAttribute('aria-expanded', 'true');
+    });
+
+    popupCloseButton?.addEventListener('click', () => {
+        mobileNavPopup.classList.remove('popup-active');
+        body.classList.remove('popup-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    });
+
+    // ... (The rest of your mega menu and other logic remains unchanged)
+    // Services Mega Menu Logic
+    const servicesContainer = document.getElementById('services-mega-menu-content');
+    if (servicesContainer) {
+        const servicesData = {
+            'bitrix24': {
+                title: 'Внедрение Битрикс24',
+                iconSrc: 'https://via.placeholder.com/24/007BFF/FFFFFF?text=B',
+                topImageSrc: 'https://via.placeholder.com/350x120/007BFF/FFFFFF?text=Bitrix24+Services',
+                detailsUrl: '/services/bitrix24',
+                content: `
+                    <h4>⚙️ Внедрение Битрикс24</h4>
+                    <ul class="service-benefits">
+                        <p>Настроим Битрикс24 под ваш бизнес — без шаблонов, с фокусом на результат и удобство команды:</p>
+                        <li>Типовые процессы</li>
+                        <li>Роботы</li>
+                        <li>Триггеры</li>
+                        <li>Бизнес-процессы любой сложности</li>
+                        <li>Интеграции со сторонними сервисами (1С, CRM, телефония и др.)</li>
+                        <li>Настройка прав доступа</li>
+                        <li>Обучение сотрудников</li>
+                        <li>Техническая поддержка</li>
+                    </ul>
+                `
+            },
+            'sites-apps': {
+                title: 'Сайты и приложения',
+                iconSrc: 'https://via.placeholder.com/24/28A745/FFFFFF?text=W',
+                topImageSrc: 'https://via.placeholder.com/350x120/28A745/FFFFFF?text=Sites+and+Apps',
+                detailsUrl: '/services/sites-apps',
+                content: `
+                    <h4>⚙️ Сайты и приложения</h4>
+                    <p>Веб-приложения:</p>
+                    <ul class="service-benefits">
+                        <li>Web-разработка на базе CMS 1C-Битрикс</li>
+                        <li>CMS Wordpress</li>
+                        <li>Реактивные сайты</li>
+                        <li>Корпоративные сайты</li>
+                        <li>Интернет-магазины</li>
+                        <li>Индивидуальные решения</li>
+                    </ul>
+                `
+            },
+            'amocrm': {
+                title: 'Внедрение amoCRM',
+                iconSrc: 'https://via.placeholder.com/24/FFC107/000000?text=A',
+                topImageSrc: 'https://via.placeholder.com/350x120/FFC107/000000?text=amoCRM+Services',
+                detailsUrl: '/services/amocrm',
+                content: `
+                    <h4>⚙️ Внедрение amoCRM</h4>
+                    <ul class="service-benefits">
+                        <p>Поможем вашему бизнесу продавать больше и эффективнее с amoCRM:</p>
+                        <li>Аудит и оптимизация воронки продаж</li>
+                        <li>Настройка digital-воронки</li>
+                        <li>Интеграция с сайтом, телефонией, соцсетями</li>
+                        <li>Создание кастомных виджетов и интеграций</li>
+                        <li>Обучение команды работе в amoCRM</li>
+                        <li>Техническая поддержка и консультации</li>
+                    </ul>
+                `
+            }
+        };
+
+        // Clear existing content
+        servicesContainer.innerHTML = '';
+
+        const servicesMenuMain = document.createElement('div');
+        servicesMenuMain.className = 'services-menu-main';
+        const servicesList = document.createElement('ul');
+
+        const serviceDetailsContainer = document.createElement('div');
+        serviceDetailsContainer.className = 'service-details';
+
+        const topImage = document.createElement('img');
+        topImage.alt = 'Наши услуги';
+        topImage.className = 'service-details-top-image';
+        serviceDetailsContainer.appendChild(topImage);
+
+        const consultationButton = document.createElement('button');
+        consultationButton.className = 'consultation-button b24-web-form-popup-btn-2';
+        consultationButton.innerHTML = 'Получить бесплатную<br>консультацию';
+        serviceDetailsContainer.appendChild(consultationButton);
+
+        const detailsContentWrapper = document.createElement('div');
+        serviceDetailsContainer.appendChild(detailsContentWrapper);
+
+        const detailsButton = document.createElement('a');
+        detailsButton.className = 'details-button';
+        detailsButton.textContent = 'Подробнее';
+        
+        Object.keys(servicesData).forEach(key => {
+            const service = servicesData[key];
+            
+            // Populate the left-side menu
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '#';
+            link.dataset.serviceId = key;
+            link.innerHTML = `<img src="${service.iconSrc}" class="service-icon" alt=""> ${service.title}`;
+            listItem.appendChild(link);
+            servicesList.appendChild(listItem);
+
+            // Create the content panel for the right side
+            const detailElement = document.createElement('div');
+            detailElement.id = `service-${key}`;
+            detailElement.className = 'service-details-content';
+            detailElement.innerHTML = service.content;
+            const buttonWrapper = document.createElement('div');
+            buttonWrapper.className = 'details-button-wrapper';
+            buttonWrapper.appendChild(detailsButton.cloneNode(true));
+            detailElement.appendChild(buttonWrapper);
+            detailsContentWrapper.appendChild(detailElement);
+        });
+
+        servicesMenuMain.appendChild(servicesList);
+        servicesContainer.appendChild(servicesMenuMain);
+        servicesContainer.appendChild(serviceDetailsContainer);
+
+        const serviceLinks = servicesList.querySelectorAll('a');
+        const detailContents = detailsContentWrapper.querySelectorAll('.service-details-content');
+
+        function showService(serviceId) {
+            const serviceData = servicesData[serviceId];
+            if (!serviceData) return;
+
+            // Update top image
+            topImage.src = serviceData.topImageSrc;
+
+            // Update active link
+            serviceLinks.forEach(l => {
+                l.classList.toggle('active', l.dataset.serviceId === serviceId);
+            });
+
+            // Update active content
+            detailContents.forEach(content => {
+                const isActive = content.id === `service-${serviceId}`;
+                content.classList.toggle('active', isActive);
+                if(isActive) {
+                    const button = content.querySelector('.details-button');
+                    if(button) {
+                        button.href = serviceData.detailsUrl;
                     }
                 }
+            });
+        }
 
-                function applyTheme(isDark) {
-                    document.body.classList.toggle('dark-theme', isDark);
-                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                    themeSwitches.forEach(s => {
-                        s.checked = isDark;
-                        s.setAttribute('aria-checked', isDark);
-                    });
-                    updateLogoTheme(isDark);
-                }
+        serviceLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const serviceId = link.dataset.serviceId;
+                showService(serviceId);
+            });
+        });
 
-                function debounce(func, delay) {
-                    let timeout;
-                    return function(...args) {
-                        const context = this;
-                        clearTimeout(timeout);
-                        timeout = setTimeout(() => func.apply(context, args), delay);
-                    };
-                }
+        // Show the first service by default
+        const firstServiceId = Object.keys(servicesData)[0];
+        if (firstServiceId) {
+            showService(firstServiceId);
+        }
+    }
 
-                themeSwitches.forEach(themeSwitch => {
-                    themeSwitch.addEventListener('change', debounce(function(e) {
-                        const isDark = this.checked;
-                        if (isDark) {
-                            document.body.classList.add('theme-transition-dark');
-                            document.body.classList.remove('theme-transition-light');
-                        } else {
-                            document.body.classList.add('theme-transition-light');
-                            document.body.classList.remove('theme-transition-dark');
-                        }
-                        setTimeout(() => {
-                            applyTheme(isDark);
-                        }, 400);
-                        setTimeout(() => {
-                            document.body.classList.remove('theme-transition-dark', 'theme-transition-light');
-                        }, 800);
-                    }, 500));
+    // Cases Mega Menu Logic
+    const casesContainer = document.getElementById('cases-mega-menu-content');
+    if (casesContainer) {
+        const casesData = [
+            {
+                id: 'case1',
+                customer: 'ООО "Строй-Проект"',
+                title: 'Создание корпоративного сайта',
+                tz: 'Разработать современный сайт для строительной компании с каталогом проектов и формой заявки.',
+                image1: 'https://via.placeholder.com/300x200.png?text=TZ+Image',
+                what_was_done: 'Проведен полный цикл работ: от прототипирования до развертывания на хостинге. Интегрирована CMS для удобного управления контентом.',
+                image2: 'https://via.placeholder.com/300x200.png?text=Work+Process',
+                result_gallery: ['https://via.placeholder.com/150x100.png?text=Screenshot+1', 'https://via.placeholder.com/150x100.png?text=Screenshot+2', 'https://via.placeholder.com/150x100.png?text=Screenshot+3'],
+                key_results: ['🚀 Посещаемость: +500% за 3 месяца', '📈 Заявок с сайта: 15+ в неделю', '⏱️ Срок реализации: 1.5 месяца'],
+                tech_stack: ['Wordpress', 'PHP', 'Figma']
+            },
+            {
+                id: 'case2',
+                customer: 'Интернет-магазин "ТехноМир"',
+                title: 'Внедрение Битрикс24',
+                tz: 'Автоматизировать процессы продаж и коммуникации с клиентами. Настроить воронки продаж и интеграцию с 1С.',
+                image1: 'https://via.placeholder.com/300x200.png?text=Bitrix24+TZ',
+                what_was_done: 'Выполнена настройка CRM, созданы кастомные бизнес-процессы. Проведено обучение сотрудников.',
+                image2: 'https://via.placeholder.com/300x200.png?text=Bitrix24+Implementation',
+                result_gallery: ['https://via.placeholder.com/150x100.png?text=CRM+Dashboard', 'https://via.placeholder.com/150x100.png?text=Sales+Funnel', 'https://via.placeholder.com/150x100.png?text=Integration+Setup'],
+                key_results: ['💰 Рост продаж: +40%', '📉 Сокращение ручных операций: на 80%', '⏱️ Срок внедрения: 3 недели'],
+                tech_stack: ['Битрикс24', '1С', 'Бизнес-процессы']
+            }
+        ];
+        const casesMenu = document.createElement('div');
+        casesMenu.className = 'cases-menu-main';
+        const casesList = document.createElement('ul');
+        const caseDetailsContainer = document.createElement('div');
+        caseDetailsContainer.className = 'case-details';
+        casesData.forEach(caseItem => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '#';
+            link.textContent = caseItem.title;
+            link.dataset.caseId = caseItem.id;
+            listItem.appendChild(link);
+            casesList.appendChild(listItem);
+            const detailElement = document.createElement('div');
+            detailElement.id = `case-${caseItem.id}`;
+            detailElement.className = 'case-details-content';
+            detailElement.innerHTML = `
+                <h4>💼 ${caseItem.title}</h4>
+                <p><strong>Заказчик:</strong> ${caseItem.customer}</p>
+                <div class="case-key-results"><h5>Ключевые результаты:</h5><ul>${caseItem.key_results.map(result => `<li>${result}</li>`).join('')}</ul></div>
+                <h5>ТЗ:</h5><p>${caseItem.tz}</p><img src="${caseItem.image1}" alt="ТЗ">
+                <h5>Что было сделано:</h5><p>${caseItem.what_was_done}</p><img src="${caseItem.image2}" alt="Процесс работы">
+                <div class="case-tech-stack"><strong>Технологии:</strong>${caseItem.tech_stack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}</div>
+                <h5>Результат:</h5><div class="case-gallery">${caseItem.result_gallery.map(img => `<img src="${img}" alt="Результат">`).join('')}</div>
+            `;
+            caseDetailsContainer.appendChild(detailElement);
+        });
+        casesMenu.appendChild(casesList);
+        casesContainer.appendChild(casesMenu);
+        casesContainer.appendChild(caseDetailsContainer);
+        const viewAllCasesButton = document.createElement('div');
+        viewAllCasesButton.className = 'mega-menu-view-all-wrapper';
+        viewAllCasesButton.innerHTML = `<a href="#" class="view-all-cases-button">Посмотреть все кейсы</a>`;
+        document.getElementById('cases-mega-menu').appendChild(viewAllCasesButton);
+        const caseLinks = casesList.querySelectorAll('a');
+        const detailContents = caseDetailsContainer.querySelectorAll('.case-details-content');
+        caseLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const caseId = link.dataset.caseId;
+                caseLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                detailContents.forEach(content => {
+                    content.id === `case-${caseId}` ? content.classList.add('active') : content.classList.remove('active');
                 });
+            });
+        });
+        if (caseLinks.length > 0) {
+            caseLinks[0].classList.add('active');
+            detailContents[0].classList.add('active');
+        }
+    }
 
-                const savedTheme = localStorage.getItem('theme');
-                applyTheme(savedTheme === 'dark');
-
-                navToggle?.addEventListener('click', () => {
-                    if (mobileNavPopup) {
-                        mobileNavPopup.classList.add('popup-active');
-                        body.classList.add('popup-open');
-                        navToggle.setAttribute('aria-expanded', 'true');
-                    }
-                });
-
-                popupCloseButton?.addEventListener('click', () => {
-                    if (mobileNavPopup) {
-                        mobileNavPopup.classList.remove('popup-active');
-                        body.classList.remove('popup-open');
-                        navToggle.setAttribute('aria-expanded', 'false');
-                    }
-                });
-
-                const servicesContainer = document.getElementById('services-mega-menu-content');
-                if (servicesContainer) {
-                    const servicesMenuMain = document.createElement('div');
-                    servicesMenuMain.className = 'services-menu-main';
-                    const servicesList = document.createElement('ul');
-                    const services = [
-                        { id: 'bitrix24', title: 'Внедрение Битрикс24', icon: '📊' },
-                        { id: 'sites-apps', title: 'Сайты и приложения', icon: '📱' },
-                        { id: 'software-dev', title: 'Разработка ПО', icon: '💻' }
-                    ];
-                    services.forEach(service => {
-                        const listItem = document.createElement('li');
-                        const link = document.createElement('a');
-                        link.href = '#';
-                        link.innerHTML = `${service.icon} ${service.title}`;
-                        link.dataset.serviceId = service.id;
-                        listItem.appendChild(link);
-                        servicesList.appendChild(listItem);
-                    });
-                    servicesMenuMain.appendChild(servicesList);
-                    servicesContainer.appendChild(servicesMenuMain);
-                    const serviceDetailsContainer = document.createElement('div');
-                    serviceDetailsContainer.className = 'service-details';
-                    const topImage = document.createElement('img');
-                    topImage.src = 'https://via.placeholder.com/350x100.png?text=Our+Services';
-                    topImage.alt = 'Наши услуги';
-                    topImage.className = 'service-details-top-image';
-                    serviceDetailsContainer.appendChild(topImage);
-                    const consultationButton = document.createElement('a');
-                    consultationButton.href = '#';
-                    consultationButton.className = 'consultation-button';
-                    consultationButton.innerHTML = 'Получить бесплатную<br>консультацию';
-                    serviceDetailsContainer.appendChild(consultationButton);
-                    const serviceDetailsContent = {
-                        'bitrix24': `
-                            <h4>⚙️ Внедрение Битрикс24</h4>
-                            <ul class="service-benefits">
-                            <p>Настроим Битрикс24 под ваш бизнес — без шаблонов, с фокусом на результат и удобство команды:</p>
-                                <li>Типовые процессы</li>
-                                <li>Роботы</li>
-                                <li>Триггеры</li>
-                                <li>Бизнес-процессы любой сложности</li>
-                                <li>Интеграции со сторонними сервисами (1С, CRM, телефония и др.)</li>
-                                <li>Настройка прав доступа</li>
-                                <li>Обучение сотрудников</li>
-                                <li>Техническая поддержка</li>
-                                <li>Автоматизация задач</li>
-                                <li>Управление проектами</li>
-                                <li>CRM-маркетинг</li>
-                                <li>Отчетность</li>
-                            </ul>
-                        `,
-                        'sites-apps': `
-                            <h4>⚙️ Сайты и приложения</h4>
-                            <p>Веб-приложения:</p>
-                            <ul class="service-benefits">
-                                <li>Web-разработка на базе CMS 1C-Битрикс</li>
-                                <li>CMS Wordpress</li>
-                                <li>Реактивные сайты</li>
-                                <li>Корпоративные сайты</li>
-                                <li>Интернет-магазины</li>
-                                <li>Индивидуальные решения</li>
-                            </ul>
-                        `,
-                        'software-dev': `
-                            <h4>⚙️ Разработка ПО</h4>
-                            <ul class="service-benefits">
-                            <p>Полный набор услуг в соответствии с индивидуальным видением заказчиков:</p>
-                                <li>Заказное программное обеспечение</li>
-                                <li>Надежные и эффективные решения с нуля</li>
-                                <li>Разработка Enterprise решения</li>
-                                <li>Помощь в разработке миграционной политики IT-систем</li>
-                                <li>Поддержка и адаптация имеющихся систем и приложений</li>
-                            </ul>
-                        `
-                    };
-                    Object.keys(serviceDetailsContent).forEach(key => {
-                        const detailElement = document.createElement('div');
-                        detailElement.id = `service-${key}`;
-                        detailElement.className = 'service-details-content';
-                        detailElement.innerHTML = serviceDetailsContent[key];
-                        serviceDetailsContainer.appendChild(detailElement);
-                    });
-                    servicesContainer.appendChild(serviceDetailsContainer);
-                    const serviceLinks = servicesList.querySelectorAll('a');
-                    const detailContents = serviceDetailsContainer.querySelectorAll('.service-details-content');
-                    serviceLinks.forEach(link => {
-                        link.addEventListener('click', (event) => {
-                            event.preventDefault();
-                            const serviceId = link.dataset.serviceId;
-                            serviceLinks.forEach(l => l.classList.remove('active'));
-                            link.classList.add('active');
-                            detailContents.forEach(content => {
-                                content.id === `service-${serviceId}` ? content.classList.add('active') : content.classList.remove('active');
-                            });
-                        });
-                    });
-                    if (serviceLinks.length > 0) {
-                        serviceLinks[0].classList.add('active');
-                        if(detailContents.length > 0) detailContents[0].classList.add('active');
-                    }
-                }
-
-                const casesContainer = document.getElementById('cases-mega-menu-content');
-                if (casesContainer) {
-                    const casesData = [
-                        {
-                            id: 'case1',
-                            customer: 'ООО "Строй-Проект"',
-                            title: 'Создание корпоративного сайта',
-                            tz: 'Разработать современный сайт для строительной компании с каталогом проектов и формой заявки.',
-                            image1: 'https://via.placeholder.com/300x200.png?text=TZ+Image',
-                            what_was_done: 'Проведен полный цикл работ: от прототипирования до развертывания на хостинге. Интегрирована CMS для удобного управления контентом.',
-                            image2: 'https://via.placeholder.com/300x200.png?text=Work+Process',
-                            result_gallery: ['https://via.placeholder.com/150x100.png?text=Screenshot+1', 'https://via.placeholder.com/150x100.png?text=Screenshot+2', 'https://via.placeholder.com/150x100.png?text=Screenshot+3'],
-                            key_results: ['🚀 Посещаемость: +500% за 3 месяца', '📈 Заявок с сайта: 15+ в неделю', '⏱️ Срок реализации: 1.5 месяца'],
-                            tech_stack: ['Wordpress', 'PHP', 'Figma']
-                        },
-                        {
-                            id: 'case2',
-                            customer: 'Интернет-магазин "ТехноМир"',
-                            title: 'Внедрение Битрикс24',
-                            tz: 'Автоматизировать процессы продаж и коммуникации с клиентами. Настроить воронки продаж и интеграцию с 1С.',
-                            image1: 'https://via.placeholder.com/300x200.png?text=Bitrix24+TZ',
-                            what_was_done: 'Выполнена настройка CRM, созданы кастомные бизнес-процессы. Проведено обучение сотрудников.',
-                            image2: 'https://via.placeholder.com/300x200.png?text=Bitrix24+Implementation',
-                            result_gallery: ['https://via.placeholder.com/150x100.png?text=CRM+Dashboard', 'https://via.placeholder.com/150x100.png?text=Sales+Funnel', 'https://via.placeholder.com/150x100.png?text=Integration+Setup'],
-                            key_results: ['💰 Рост продаж: +40%', '📉 Сокращение ручных операций: на 80%', '⏱️ Срок внедрения: 3 недели'],
-                            tech_stack: ['Битрикс24', '1С', 'Бизнес-процессы']
-                        }
-                    ];
-                    const casesMenu = document.createElement('div');
-                    casesMenu.className = 'cases-menu-main';
-                    const casesList = document.createElement('ul');
-                    const caseDetailsContainer = document.createElement('div');
-                    caseDetailsContainer.className = 'case-details';
-                    casesData.forEach(caseItem => {
-                        const listItem = document.createElement('li');
-                        const link = document.createElement('a');
-                        link.href = '#';
-                        link.textContent = caseItem.title;
-                        link.dataset.caseId = caseItem.id;
-                        listItem.appendChild(link);
-                        casesList.appendChild(listItem);
-                        const detailElement = document.createElement('div');
-                        detailElement.id = `case-${caseItem.id}`;
-                        detailElement.className = 'case-details-content';
-                        detailElement.innerHTML = `
-                            <h4>💼 ${caseItem.title}</h4>
-                            <p><strong>Заказчик:</strong> ${caseItem.customer}</p>
-                            <div class="case-key-results"><h5>Ключевые результаты:</h5><ul>${caseItem.key_results.map(result => `<li>${result}</li>`).join('')}</ul></div>
-                            <h5>ТЗ:</h5><p>${caseItem.tz}</p><img src="${caseItem.image1}" alt="ТЗ">
-                            <h5>Что было сделано:</h5><p>${caseItem.what_was_done}</p><img src="${caseItem.image2}" alt="Процесс работы">
-                            <div class="case-tech-stack"><strong>Технологии:</strong>${caseItem.tech_stack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}</div>
-                            <h5>Результат:</h5><div class="case-gallery">${caseItem.result_gallery.map(img => `<img src="${img}" alt="Результат">`).join('')}</div>
-                        `;
-                        caseDetailsContainer.appendChild(detailElement);
-                    });
-                    casesMenu.appendChild(casesList);
-                    casesContainer.appendChild(casesMenu);
-                    casesContainer.appendChild(caseDetailsContainer);
-                    const viewAllCasesButton = document.createElement('div');
-                    viewAllCasesButton.className = 'mega-menu-view-all-wrapper';
-                    viewAllCasesButton.innerHTML = `<a href="#" class="view-all-cases-button">Посмотреть все кейсы</a>`;
-                    const casesMegaMenu = document.getElementById('cases-mega-menu');
-                    if(casesMegaMenu) casesMegaMenu.appendChild(viewAllCasesButton);
-                    const caseLinks = casesList.querySelectorAll('a');
-                    const detailContents = caseDetailsContainer.querySelectorAll('.case-details-content');
-                    caseLinks.forEach(link => {
-                        link.addEventListener('click', (event) => {
-                            event.preventDefault();
-                            const caseId = link.dataset.caseId;
-                            caseLinks.forEach(l => l.classList.remove('active'));
-                            link.classList.add('active');
-                            detailContents.forEach(content => {
-                                content.id === `case-${caseId}` ? content.classList.add('active') : content.classList.remove('active');
-                            });
-                        });
-                    });
-                    if (caseLinks.length > 0) {
-                        caseLinks[0].classList.add('active');
-                        if(detailContents.length > 0) detailContents[0].classList.add('active');
-                    }
-                }
-
-                // ... All other logic for licenses, gallery, etc. ...
-
+    // License Mega Menu Logic
     const licenseData = {
         'bitrix24-licenses': [
             {
@@ -564,16 +574,62 @@
         container.addEventListener('scroll', updateArrows);
     }
 
-                if (header) header.style.backgroundColor = ''; // Script finished, reset color
-            } catch (e) {
-                if (header) header.style.backgroundColor = 'red';
+    // Prevent page scroll when scrolling inside mega menus
+    const scrollableMegaMenuAreas = document.querySelectorAll('.service-details, .case-details, .license-card .features, .services-menu-main');
+    scrollableMegaMenuAreas.forEach(element => {
+        element.addEventListener('wheel', function(event) {
+            if (element.scrollHeight <= element.clientHeight) {
+                return;
             }
-        }
+            const isScrollingDown = event.deltaY > 0;
+            const isScrollingUp = event.deltaY < 0;
+            const atBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 1;
+            const atTop = element.scrollTop < 1;
+            if ((isScrollingDown && atBottom) || (isScrollingUp && atTop)) {
+                event.preventDefault();
+            }
+            event.stopPropagation();
+        });
+    });
 
-        const probixHeaderInterval = setInterval(function() {
-            const header = document.querySelector('.site-header');
-            if (header) {
-                clearInterval(probixHeaderInterval);
-                initProbixHeader();
-            }
-        }, 100);
+    
+
+    // Update Date and Time
+    function updateDateTime() {
+        const now = new Date();
+        const optionsDate = { year: 'numeric', month: 'long', day: 'numeric' };
+        const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+        const moscowDate = now.toLocaleDateString('ru-RU', { ...optionsDate, timeZone: 'Europe/Moscow' });
+        const moscowTime = now.toLocaleTimeString('ru-RU', { ...optionsTime, timeZone: 'Europe/Moscow' });
+
+        document.getElementById('current-date').textContent = moscowDate;
+        document.getElementById('current-time').textContent = moscowTime;
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    // Corporate Portal Price Logic
+    const corporateUsersDropdown = document.getElementById('corporate-users');
+    const corporatePriceDisplay = document.getElementById('corporate-price');
+
+    const corporatePrices = {
+        '50': '159 000 ₽',
+        '100': '229 000 ₽',
+        '250': '349 000 ₽',
+        '500': '599 000 ₽'
+    };
+
+    function updateCorporatePrice() {
+        if (corporateUsersDropdown && corporatePriceDisplay) {
+            const selectedUsers = corporateUsersDropdown.value;
+            corporatePriceDisplay.textContent = corporatePrices[selectedUsers];
+        }
+    }
+
+    if (corporateUsersDropdown) {
+        corporateUsersDropdown.addEventListener('change', updateCorporatePrice);
+        // Set initial price on load
+        updateCorporatePrice();
+    }
+});
