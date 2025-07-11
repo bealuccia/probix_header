@@ -110,8 +110,9 @@ document.addEventListener('DOMContentLoaded', function () {
         topImage.className = 'service-details-top-image';
         serviceDetailsContainer.appendChild(topImage);
 
-        const consultationButton = document.createElement('button');
-        consultationButton.className = 'consultation-button b24-web-form-popup-btn-2';
+        const consultationButton = document.createElement('a');
+        consultationButton.href = '#';
+        consultationButton.className = 'consultation-button';
         consultationButton.innerHTML = 'Получить бесплатную<br>консультацию';
         serviceDetailsContainer.appendChild(consultationButton);
 
@@ -631,5 +632,14 @@ document.addEventListener('DOMContentLoaded', function () {
         corporateUsersDropdown.addEventListener('change', updateCorporatePrice);
         // Set initial price on load
         updateCorporatePrice();
+    }
+});
+
+
+window.addEventListener('message', function (e) {
+    if (!e.origin.includes('github.io')) return;
+    const iframe = document.getElementById('probixFrame');
+    if (iframe && e.data && e.data.type === 'resize' && e.data.height) {
+        iframe.style.height = e.data.height + 'px';
     }
 });
