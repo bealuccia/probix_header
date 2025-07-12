@@ -60,7 +60,13 @@
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1rem;}.service-details ul{list-style-position: inside;
-    padding-left: 0;}.service-details ul li{margin-bottom: 0.5rem;}body.popup-open{overflow: hidden;}a{text-decoration: none;
+    padding-left: 0;}.service-details ul li{margin-bottom: 0.5rem;}body.popup-open{overflow: hidden;}
+
+body.mega-menu-open {
+    overflow: hidden;
+}
+
+a{text-decoration: none;
           color: inherit;
           transition: all 0.2s ease;}ul{list-style: none;}img{max-width: 100%;
           height: auto;
@@ -102,7 +108,11 @@
           height: 100%;
           padding: 0;}.main-nav .nav-list a{line-height: 1.5;
           display: flex;
-          align-items: center;}.nav-item{font-size: 16px; /* Slightly reduced font size */}.nav-item > a{display: block;
+          align-items: center;}.nav-item{font-size: 18px; /* Slightly reduced font size */}.main-nav .nav-item > a {
+    font-size: 18px !important; /* Increased font size */
+}
+
+.nav-item > a{display: block;
           padding: 0.8rem 1rem;
           font-weight: 400;
           color: var(--header-text-color);
@@ -1898,7 +1908,19 @@
 
         // Show the first service by default
         const firstServiceId = Object.keys(servicesData)[0];
-        if (firstServiceId){showService(firstServiceId);}}// License Mega Menu Logic
+        if (firstServiceId){showService(firstServiceId);}}
+
+    const megaMenuItems = document.querySelectorAll('.has-mega-menu');
+    megaMenuItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            document.body.classList.add('mega-menu-open');
+        });
+        item.addEventListener('mouseleave', () => {
+            document.body.classList.remove('mega-menu-open');
+        });
+    });
+
+// License Mega Menu Logic
     const licenseData ={'bitrix24-licenses':[{title: 'Бесплатный',
                 subtitle: 'Начните работать онлайн и продавать больше с CRM',
                 users: 'неограниченно пользователей',
