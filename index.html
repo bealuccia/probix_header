@@ -26,7 +26,7 @@
 .license-card h3, .case-details-content h4{font-size: 1.5rem; /* ~24px */}.contacts-mega-menu h4, .case-details-content h5, .services-mega-menu h4{font-size: 1.2rem; /* ~19px */}/* Overrides for specific elements */
 .main-nav .nav-item > a{font-weight: 500; /* Slightly bolder nav links */}.license-card .price{font-family: var(--header-heading-font);
     font-weight: var(--header-heading-weight);}.buy-button, .consultation-button, .view-all-cases-button{font-family: var(--header-body-font);
-    font-weight: var(--header-heading-weight); /* Bold buttons */}.features li, .features span{font-size: 0.9rem; /* Smaller text for feature lists */}/* End Text Unification Styles */
+    font-weight: var(--header-heading-weight); /* Bold buttons */}.features li, .features span{font-size: calc(0.9rem + 3px) !important; /* Smaller text for feature lists */}/* End Text Unification Styles */
 
 :root{--header-bg: #f1f1f1;
           --header-text-color: #000000;
@@ -451,9 +451,8 @@ a{text-decoration: none;
     color: #555;
     height: 190px; /* Adjusted height */
     overflow-y: auto; /* Add scroll */
-    font-weight: 400;
-    font-size: calc(0.9rem + 13px);}#bitrix24-licenses .license-card .features{height: 140px; /* Reduced height for this tab */}.license-card .features li{margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
+    font-weight: 400;}#bitrix24-licenses .license-card .features{height: 140px; /* Reduced height for this tab */}.license-card .features li{margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
     position: relative;
     font-weight: 400;}/* Scroll Arrows */
 .scroll-arrow{position: absolute;
