@@ -244,34 +244,7 @@ a{text-decoration: none;
     max-width: 900px; /* Increased width */
     left: 50%;
     transform: translateX(-50%);}@media (max-width: 991px){.nav-toggle{display: block;
-            order: 1;}
-
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-  }
-
-  .logo img {
-    height: 45px;
-  }
-
-  .header-social-links {
-    display: none;
-  }
-
-  .popup-nav-container .nav-list {
-    gap: 0.5rem;
-  }
-
-  .popup-nav-container .nav-item a {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-  }
-}
-.header-container > nav.main-nav{display: none !important;}.mega-menu{display: none !important;}main{padding-top: var(--header-height);}}.mobile-nav-popup{position: fixed;
+            order: 1;}.header-container > nav.main-nav{display: none !important;}.mega-menu{display: none !important;}main{padding-top: var(--header-height);}}.mobile-nav-popup{position: fixed;
           inset: 0;
           background-color: var(--popup-bg);
           z-index: 1100;
@@ -557,8 +530,28 @@ a{text-decoration: none;
     font-size: 19px !important;
 }
 
+/* Поведение хедера поверх баннера */
+.site-header {
+  background-color: transparent;
+  color: #ffffff;
+}
 body.popup-open .mobile-nav-popup {
   background-color: #0a1f3c !important;
+}
+
+/* Иконки соцсетей на мобильных устройствах правее */
+@media (max-width: 768px) {
+  .header-social-links {
+    margin-left: auto;
+    margin-right: 1.2rem;
+    order: 2;
+  }
+  .nav-toggle {
+    order: 3;
+  }
+  .logo {
+    order: 1;
+  }
 }
 
 </style>
