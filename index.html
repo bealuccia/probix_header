@@ -84,9 +84,11 @@ a{text-decoration: none;
           z-index: 1000;
           box-shadow: none;
           transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-          font-family: 'Inter', sans-serif;}.site-header.scrolled{background-color: #ffffff;
+          font-family: 'Inter', sans-serif;}
+.site-header.scrolled{background-color: #ffffff;
             color: #000000;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);}.logo .dark-logo{display: none;}.scrolled .logo .light-logo{display: none;}.scrolled .logo .dark-logo{display: block;}.header-container{max-width: 1200px; /* Reverted to original width */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);}
+.logo .dark-logo{display: none;}.scrolled .logo .light-logo{display: none;}.scrolled .logo .dark-logo{display: block;}.header-container{max-width: 1200px; /* Reverted to original width */
           margin: 0 auto;
           display: flex;
           flex-wrap: wrap;
@@ -1833,7 +1835,15 @@ body.popup-open .mobile-nav-popup {
     const body = document.body;
     const header = document.querySelector('.site-header');
 
-    window.addEventListener('scroll', function(){if (window.scrollY > 50){header.classList.add('scrolled');}else{header.classList.remove('scrolled');}});
+    window.addEventListener('scroll', function(){
+        if (window.scrollY > 50){
+            header.classList.add('scrolled');
+            body.classList.add('scrolled');
+        }else{
+            header.classList.remove('scrolled');
+            body.classList.remove('scrolled');
+        }
+    });
     const themeSwitches = document.querySelectorAll('.theme-switch-checkbox');
 
     
