@@ -554,6 +554,28 @@ body.popup-open .mobile-nav-popup {
   }
 }
 
+
+@media (max-width: 991px) {
+  body:not(.scrolled) .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent !important;
+  }
+
+  /* Контент баннера не должен иметь отступ сверху */
+  body:not(.scrolled) main,
+  body:not(.scrolled) .main-content,
+  body:not(.scrolled) .page-content,
+  body:not(.scrolled) .bitrix-body,
+  body:not(.scrolled) .banner {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
 </style>
 </head>
 <body>
