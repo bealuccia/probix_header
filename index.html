@@ -601,6 +601,206 @@ body.popup-open .mobile-nav-popup {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
 }
 
+
+/* Фиксированное окно для иконок */
+.services-mega-menu .service-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Большое изображение внутри контента услуги */
+.service-details-top-image {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .service-details-top-image {
+    max-height: 120px;
+  }
+  .services-mega-menu .service-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Увеличенные иконки в списке услуг */
+.services-mega-menu .service-icon {
+  width: 42px !important;
+  height: 42px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .services-mega-menu .service-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+/* Ещё больше иконки и выравнивание влево */
+.services-mega-menu .service-icon {
+  width: 56px !important;
+  height: 56px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-left: 0 !important;
+  margin-right: 12px;
+  align-self: flex-start;
+}
+
+.services-mega-menu .services-menu-main li a {
+  align-items: flex-start !important;
+}
+
+@media (max-width: 768px) {
+  .services-mega-menu .service-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+/* Максимально крупные иконки и жёсткое выравнивание по левому краю */
+.services-mega-menu .service-icon {
+  width: 64px !important;
+  height: 64px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-left: 0 !important;
+  margin-right: 14px;
+  align-self: flex-start;
+}
+
+.services-mega-menu .services-menu-main li a {
+  align-items: flex-start !important;
+  padding-left: 0 !important; /* убрать отступ слева */
+}
+
+.services-mega-menu .services-menu-main {
+  padding-left: 0 !important; /* убрать отступ всего блока */
+}
+
+@media (max-width: 768px) {
+  .services-mega-menu .service-icon {
+    width: 56px !important;
+    height: 56px !important;
+  }
+}
+
+/* Исправляем вылет текста из закрашенной области */
+.services-mega-menu .services-menu-main li a {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.75rem 1rem;
+  gap: 0.75rem;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.services-mega-menu .services-menu-main li a span {
+  max-width: 120px;
+  display: inline-block;
+  word-wrap: break-word;
+}
+
+.services-mega-menu .services-menu-main li a.active {
+  background-color: #f0f8ff;
+  color: #007bff;
+  border-radius: 8px;
+}
+
+/* Увеличиваем левую колонку с пунктами услуг */
+.services-mega-menu .services-menu-main {
+  flex: 0 0 240px !important; /* было 200px */
+  max-width: 240px !important;
+}
+
+/* Уменьшаем правый контент с описанием */
+.services-mega-menu .service-details {
+  max-width: calc(100% - 240px - 1.5rem); /* Учитываем gap */
+}
+
+/* Дополнительно уменьшаем размер текста в списке выгод */
+.services-mega-menu .service-benefits {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Увеличиваем правое верхнее изображение */
+.service-details-top-image {
+  width: 100%;
+  max-height: 280px !important;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .service-details-top-image {
+    max-height: 200px !important;
+  }
+}
+
+/* Защита от перекрытия картинки кнопкой */
+.service-details-top-image {
+  width: 100%;
+  max-height: 220px !important; /* уменьшено с 280px */
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Отступ сверху под кнопку */
+.service-details {
+  padding-top: 60px;
+  position: relative;
+}
+
+/* Контейнер для изображения с защитой от наложения */
+.service-image-wrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.service-details-top-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Контейнер изображения с рамкой и фиксированным размером */
+.service-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-details-top-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
 </style>
 </head>
 <body>
@@ -1862,8 +2062,8 @@ body.popup-open .mobile-nav-popup {
     // Services Mega Menu Logic
     const servicesContainer = document.getElementById('services-mega-menu-content');
     if (servicesContainer){const servicesData ={'bitrix24':{title: 'Внедрение Битрикс24',
-                iconSrc: 'https://via.placeholder.com/24/007BFF/FFFFFF?text=B',
-                topImageSrc: 'https://via.placeholder.com/350x120/007BFF/FFFFFF?text=Bitrix24+Services',
+                iconSrc: 'https://bitrix24public.com/probix.bitrix24.ru/docs/pub/18b93fec2247bc398a212f459c32128d/showFile/?&token=7gto39ko5m8q',
+                topImageSrc: 'https://bitrix24public.com/probix.bitrix24.ru/docs/pub/18b93fec2247bc398a212f459c32128d/showFile/?&token=7gto39ko5m8q',
                 detailsUrl: '/services/bitrix24',
                 content: `
                     <h4>⚙️ Внедрение Битрикс24</h4>
@@ -1880,8 +2080,8 @@ body.popup-open .mobile-nav-popup {
                     </ul>
                 `},
             'sites-apps':{title: 'Сайты и приложения',
-                iconSrc: 'https://via.placeholder.com/24/28A745/FFFFFF?text=W',
-                topImageSrc: 'https://via.placeholder.com/350x120/28A745/FFFFFF?text=Sites+and+Apps',
+                iconSrc: 'https://bitrix24public.com/probix.bitrix24.ru/docs/pub/34b92395acf134fdece5242942499ab4/showFile/?&token=n8g2ydowd2w6',
+                topImageSrc: 'https://bitrix24public.com/probix.bitrix24.ru/docs/pub/34b92395acf134fdece5242942499ab4/showFile/?&token=n8g2ydowd2w6',
                 detailsUrl: '/services/sites-apps',
                 content: `
                     <h4>⚙️ Сайты и приложения</h4>
@@ -1896,8 +2096,8 @@ body.popup-open .mobile-nav-popup {
                     </ul>
                 `},
             'amocrm':{title: 'Внедрение amoCRM',
-                iconSrc: 'https://via.placeholder.com/24/FFC107/000000?text=A',
-                topImageSrc: 'https://via.placeholder.com/350x120/FFC107/000000?text=amoCRM+Services',
+                iconSrc: 'https://bitrix24public.com/probix.bitrix24.ru/docs/pub/1ef0f6f6a8abd6872599ecb4e63f2b8b/showFile/?&token=hn3kbxy9vud8',
+                topImageSrc: 'https://bitrix24public.com/probix.bitrix24.ru/docs/pub/1ef0f6f6a8abd6872599ecb4e63f2b8b/showFile/?&token=hn3kbxy9vud8',
                 detailsUrl: '/services/amocrm',
                 content: `
                     <h4>⚙️ Внедрение amoCRM</h4>
