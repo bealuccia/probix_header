@@ -2490,10 +2490,19 @@ document.addEventListener("DOMContentLoaded", function () {
     showService('bitrix24-licenses');
 });
 </script>
-<script data-b24-form="click/6/4txbe3" data-skip-moving="true">
+<script data-skip-moving="true">
 (function(w,d,u){
-var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);
-var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+ var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);
+ var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
 })(window,document,'https://cdn-ru.bitrix24.ru/b33375352/crm/form/loader_6.js');
+</script><script>
+document.addEventListener('DOMContentLoaded', function() {
+  const btn = document.getElementById('open-b24-form');
+  if (btn) {
+    btn.addEventListener('click', function() {
+      if (window.b24form) window.b24form.open();
+    });
+  }
+});
 </script></body>
 </html>
