@@ -835,6 +835,26 @@ body.popup-open .mobile-nav-popup {
 .services-menu-main {
   font-size: 17px !important;
 }
+
+
+/* Кастомизация кнопки, создаваемой Bitrix */
+.b24-web-form-popup-btn {
+  background-color: #0078d7;
+  color: #fff !important;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.b24-web-form-popup-btn:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
 </style>
 </head>
 <body>
@@ -2490,10 +2510,5 @@ document.addEventListener("DOMContentLoaded", function () {
     showService('bitrix24-licenses');
 });
 </script>
-<script data-b24-form="click/6/4txbe3" data-skip-moving="true">
-(function(w,d,u){
-  var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);
-  var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
-})(window,document,'https://cdn-ru.bitrix24.ru/b33375352/crm/form/loader_6.js');
-</script></body>
+</body>
 </html>
