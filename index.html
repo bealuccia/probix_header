@@ -2,6 +2,7 @@
 
 <html lang="ru">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -9,8 +10,8 @@
 </title>
 <style>
    /* Text Unification Styles */
-:root{--header-heading-font: 'Inter', sans-serif;
-    --header-body-font: 'Montserrat', sans-serif;
+:root{--header-heading-font: 'Open Sans', sans-serif;
+    --header-body-font: 'Open Sans', sans-serif;
     --header-base-text-size: 16px;
     --header-base-weight: 400;
     --header-heading-weight: 700;}/* Apply base font to all header elements */
@@ -49,7 +50,7 @@
           --mobile-breakpoint: 992px;}*, *::before, *::after{box-sizing: border-box;
           margin: 0;
           padding: 0;
-          transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;}body{font-family: 'Montserrat', sans-serif;
+          transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;}body{font-family: 'Open Sans', sans-serif;
           font-size: 16px;
           color: #212529;
           line-height: 1.6;
@@ -84,7 +85,7 @@ a{text-decoration: none;
           z-index: 1000;
           box-shadow: none;
           transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-          font-family: 'Inter', sans-serif;}
+          font-family: 'Open Sans', sans-serif;}
 .site-header.scrolled{background-color: #ffffff;
             color: #000000;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);}
@@ -94,7 +95,7 @@ a{text-decoration: none;
           flex-wrap: wrap;
           justify-content: space-between;}.logo{display: flex;
           align-items: center;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Open Sans', sans-serif;
           font-weight: 700;
           font-size: 1.5rem;
           letter-spacing: -0.5px;
@@ -835,27 +836,56 @@ body.popup-open .mobile-nav-popup {
 .services-menu-main {
   font-size: 17px !important;
 }
+</style>
 
-
-/* Кастомизация кнопки, создаваемой Bitrix */
-.b24-web-form-popup-btn {
-  background-color: #0078d7;
-  color: #fff !important;
-  font-family: "Segoe UI", sans-serif;
+<style>
+/* Единые стили Open Sans */
+.site-header,
+.mega-menu,
+.popup-nav-container {
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
-.b24-web-form-popup-btn:hover {
-  background-color: #005fa3;
-  transform: translateY(-2px);
+.site-header h1,
+.site-header h2,
+.site-header h3,
+.site-header h4,
+.mega-menu h1,
+.mega-menu h2,
+.mega-menu h3,
+.mega-menu h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  color: #212529;
+}
+
+.services-mega-menu .service-details-content h4,
+.contacts-mega-menu h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #005c97 !important;
+}
+
+.contacts-mega-menu ul li,
+.contacts-mega-menu ul li a,
+.services-mega-menu .service-details-content p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+
+.license-card .card-subtitle,
+.license-card .features li span,
+.license-card .features li {
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
 }
 </style>
+
 </head>
 <body>
 <header class="site-header">
