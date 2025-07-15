@@ -300,7 +300,7 @@
     }
 
     .nav-item>a::after {
-      content: '';
+      content: none !important;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -314,7 +314,7 @@
 
     .nav-item>a:hover::after,
     .nav-item>a.active::after {
-      transform: scaleX(1);
+      transform: scaleX(0);
     }
 
     .main-nav .nav-item>a.active {
