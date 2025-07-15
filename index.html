@@ -287,6 +287,7 @@
 
     .main-nav .nav-item>a {
       font-size: 18px !important;
+      text-decoration: none !important;
       /* Increased font size */
     }
 
@@ -925,13 +926,18 @@
 
     .card-header {
       border-bottom: 1px solid #eee;
-      min-height: 100px;
+      min-height: 157px;
       /* Ensure consistent height for header */
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-
+    .card-header > h3 {
+      height: 60px;
+     } 
+    .card-header > p {
+      height: 20px;
+     } 
     .card-body {
       flex-grow: 1;
       display: flex;
