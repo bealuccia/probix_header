@@ -102,7 +102,7 @@
       --header-bg: #f1f1f1;
       --header-text-color: #000000;
       --link-hover-bg: rgba(255, 255, 255, 0.1);
-      --link-active-underline: #87CEFA;
+      --link-active-underline: #007BFF;
       --mega-menu-bg: #ffffff;
       --mega-menu-text-color: #333333;
       --mega-menu-border-top: #007BFF;
@@ -1161,8 +1161,7 @@
     }
 
     .details-button {
-      display: inline-block;
-      margin-top: 1rem;
+      display: inline-block;        /* Оставляем, чтобы кнопка не была блочной */
       padding: 0.5rem 1rem;
       background-color: #007BFF;
       color: #fff;
@@ -1170,10 +1169,12 @@
       text-decoration: none;
       transition: background-color 0.3s ease;
       text-align: center;
+      width: auto;                 /* Убеждаемся, что ширина авто */
     }
 
     .details-button:hover {
-      background-color: #0056b3;
+      background-color: #007BFF;
+      box-shadow: 0 0 10px #339dff, 0 0 20px #339dff;
       text-decoration: none !important;
     }
 
@@ -1181,6 +1182,7 @@
       text-align: center;
       margin-top: 1rem;
     }
+
 
     /* Белый текст меню при прозрачном хедере */
     .site-header:not(.scrolled) .main-nav .nav-item>a {
