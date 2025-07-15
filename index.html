@@ -1161,21 +1161,24 @@
     }
 
     .details-button {
-      display: inline-block;        /* Оставляем, чтобы кнопка не была блочной */
+      display: inline-block;
       padding: 0.5rem 1rem;
       background-color: #007BFF;
       color: #fff;
       border-radius: 4px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease; /* Плавный переход */
       text-align: center;
-      width: auto;                 /* Убеждаемся, что ширина авто */
+      width: auto;
     }
+
     
     .details-button:hover {
-      background-color: #0056b3;   /* Лучше немного затемнить при ховере */
+      background: linear-gradient(45deg, #007BFF, #00AFFF);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
       text-decoration: none !important;
     }
+
     
     .details-button-wrapper {
       text-align: center;
