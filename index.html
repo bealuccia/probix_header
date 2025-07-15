@@ -299,7 +299,7 @@
       transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
     }
 
-    .nav-item>a {
+    .nav-item>a::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -312,8 +312,8 @@
       transition: transform 0.3s ease;
     }
 
-    .nav-item>a:hover,
-    .nav-item>a.active {
+    .nav-item>a:hover::after,
+    .nav-item>a.active::after {
       transform: scaleX(1);
     }
 
@@ -1602,7 +1602,25 @@
       font-weight: 400;
       color: #555;
     }
-  </style>
+  
+/* Убираем подчеркивание и линию снизу у активной кнопки */
+.nav-item > a.active {
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+/* Убираем псевдоэлемент ::after */
+.nav-item > a::after {
+  content: none !important;
+}
+
+/* Сохраняем цветовое выделение активной кнопки */
+.nav-item > a.active {
+  background-color: var(--link-hover-bg) !important;
+  color: #158be0 !important;
+}
+
+</style>
 
 </head>
 
