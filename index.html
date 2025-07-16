@@ -404,13 +404,15 @@
       max-height: 400px;
       overflow-y: auto;
       overflow-x: hidden;
-      
+      display: flex;
+      flex-direction: column;
     }
 
     .services-mega-menu .services-menu-main ul {
       list-style: none;
       padding: 0;
       margin: 0;
+      flex-grow: 1; /* Allow the list to take up available space */
     }
 
     .services-mega-menu .services-menu-main li a {
@@ -1171,7 +1173,7 @@
     .details-button {
       background: linear-gradient(45deg, #00AFFF, #007BFF);
       color: white !important;
-      padding: 15px 18px;
+      padding: 8px 16px;
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
@@ -1193,8 +1195,32 @@
     }
     
     .details-button-wrapper {
-      text-align: center;
+      display: flex;
+      justify-content: center;
       margin-top: 1rem;
+    }
+
+    .consultation-button {
+      display: block;
+      background: linear-gradient(45deg, #00AFFF, #007BFF);
+      color: white !important;
+      padding: 12px 15px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      margin-top: auto; /* Push the button to the bottom */
+      margin-bottom: 1rem; /* Add some space at the bottom */
+    }
+
+    .consultation-button:hover {
+      background: linear-gradient(45deg, #007BFF, #00AFFF);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+      text-decoration: none !important;
     }
 
 
@@ -2970,6 +2996,11 @@
         servicesMenuMain.className = 'services-menu-main';
         const servicesList = document.createElement('ul');
 
+        const consultationButton = document.createElement('a');
+        consultationButton.href = '#'; // You can set the link for the consultation here
+        consultationButton.className = 'consultation-button';
+        consultationButton.textContent = 'Бесплатная консультация';
+
         const serviceDetailsContainer = document.createElement('div');
         serviceDetailsContainer.className = 'service-details';
 
@@ -3016,6 +3047,7 @@
         });
 
         servicesMenuMain.appendChild(servicesList);
+        servicesMenuMain.appendChild(consultationButton);
         servicesContainer.appendChild(servicesMenuMain);
         servicesContainer.appendChild(serviceDetailsContainer);
 
