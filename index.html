@@ -3380,11 +3380,14 @@
         container.addEventListener('scroll', updateArrows);
       }
 
-      // Smart scroll for mega menus
-      const megaMenus = document.querySelectorAll('.mega-menu');
-      megaMenus.forEach(menu => {
-        menu.addEventListener('wheel', function(event) {
-          // If the menu content is smaller than its container, prevent scrolling
+      // Smart scroll for all scrollable areas within the mega menu
+      const scrollableAreas = document.querySelectorAll(
+        '.mega-menu, .service-details, .case-details, .license-card .features, .services-menu-main'
+      );
+
+      scrollableAreas.forEach(element => {
+        element.addEventListener('wheel', function (event) {
+          // If the element is not scrollable, prevent the page from scrolling
           if (this.scrollHeight <= this.clientHeight) {
             event.preventDefault();
             return;
@@ -3392,15 +3395,15 @@
 
           const isScrollingDown = event.deltaY > 0;
           const isScrollingUp = event.deltaY < 0;
-          // Check if we are at the very bottom of the scroll
           const atBottom = this.scrollHeight - this.scrollTop - this.clientHeight < 1;
-          // Check if we are at the very top of the scroll
           const atTop = this.scrollTop < 1;
 
+          // If we are at the top/bottom and trying to scroll further, prevent it.
           if ((isScrollingDown && atBottom) || (isScrollingUp && atTop)) {
             event.preventDefault();
           }
-          // Allow the event to propagate within the menu otherwise
+
+          // IMPORTANT: Stop the event from bubbling up to parent scrollable containers
           event.stopPropagation();
         });
       });
