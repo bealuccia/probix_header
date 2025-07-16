@@ -763,10 +763,11 @@
 
     .license-tabs {
       display: flex;
-      justify-content: center;
-      /* Center tabs */
+      justify-content: flex-start; /* Align to start for scrolling */
       background-color: #f1f1f1;
       border-bottom: 1px solid #ddd;
+      flex-wrap: nowrap; /* Prevent wrapping */
+      overflow-x: auto; /* Allow horizontal scroll */
     }
 
     .tab-button {
@@ -780,6 +781,8 @@
       font-weight: 500;
       color: #555;
       border-bottom: 3px solid transparent;
+      white-space: nowrap; /* Prevent text from wrapping */
+      flex-shrink: 0; /* Prevent tabs from shrinking */
     }
 
     .tab-button:hover {
@@ -972,6 +975,7 @@
 
     .license-card .card-subtitle {
       color: #777;
+      margin-top: 1.8rem; /* Add space above the dropdown */
       margin-bottom: 1rem;
       height: 50px;
       /* Adjusted height for consistent layout */
@@ -1230,6 +1234,24 @@
     .license-card .features::-webkit-scrollbar-thumb:hover,
     .services-menu-main::-webkit-scrollbar-thumb:hover {
       background: #a8a8a8;
+    }
+
+    /* Horizontal scrollbar for tabs */
+    .license-tabs::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .license-tabs::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .license-tabs::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 10px;
+    }
+
+    .license-tabs::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
     }
 
     .consultation-button {
@@ -1862,20 +1884,18 @@
                             Корпоративный портал
                           </h3>
                           <p class="card-subtitle">
-                            Пользователи:
-                            <br />
                             <select class="user-select-dropdown" id="corporate-users">
                               <option value="50">
-                                50
+                                50 пользователей
                               </option>
                               <option value="100">
-                                100
+                                100 пользователей
                               </option>
                               <option value="250">
-                                250
+                                250 пользователей
                               </option>
                               <option value="500">
-                                500
+                                500 пользователей
                               </option>
                             </select>
                           </p>
@@ -3327,7 +3347,7 @@
           storage = selectedTier.storage;
           userContent = `
                 <select class="user-select-dropdown" data-card-title="${cardData.title}">
-                    ${cardData.userTiers.map(tier => `<option value="${tier.users}">${tier.users}пользователей</option>`).join('')}</select>
+                    ${cardData.userTiers.map(tier => `<option value="${tier.users}">${tier.users} пользователей</option>`).join('')}</select>
             `;
         } else {
           price = formatPrice(isYearly ? cardData.price.year : cardData.price.month);
