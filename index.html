@@ -172,10 +172,6 @@
       overflow: hidden;
     }
 
-    body.mega-menu-open {
-      overflow: hidden;
-    }
-
     a {
       text-decoration: none;
       color: inherit;
@@ -1173,7 +1169,7 @@
     .details-button {
       background: linear-gradient(45deg, #00AFFF, #007BFF);
       color: white !important;
-      padding: 8px 16px;
+      padding: 12px 18px;
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
@@ -3101,13 +3097,11 @@
           megaMenuItems.forEach(otherItem => {
             if (otherItem !== item) {
               otherItem.classList.remove('mega-menu-active');
-              document.body.classList.remove('mega-menu-open');
             }
           });
 
           // Открыть/закрыть текущее меню
           item.classList.toggle('mega-menu-active');
-          document.body.classList.toggle('mega-menu-open');
 
           event.stopPropagation();
         });
@@ -3116,10 +3110,8 @@
       // Логика для открытия/закрытия меню контактов при наведении
       if (contactsMenuItem) {
         contactsMenuItem.addEventListener('mouseenter', () => {
-          document.body.classList.add('mega-menu-open');
         });
         contactsMenuItem.addEventListener('mouseleave', () => {
-          document.body.classList.remove('mega-menu-open');
         });
       }
 
@@ -3128,7 +3120,6 @@
         const openMenu = document.querySelector('.has-mega-menu.mega-menu-active');
         if (openMenu && !openMenu.contains(event.target)) {
           openMenu.classList.remove('mega-menu-active');
-          document.body.classList.remove('mega-menu-open');
         }
       });
 
