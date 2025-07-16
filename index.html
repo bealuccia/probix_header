@@ -368,13 +368,21 @@
       /* Slightly reduced font size */
     }
 
-    .nav-item.has-mega-menu:hover>.mega-menu,
+    .nav-item.has-mega-menu.mega-menu-active>.mega-menu,
     .nav-item.contacts-item.mm-active>.mega-menu {
       display: block;
       opacity: 1;
       visibility: visible;
       transform: translateX(-50%) translateY(0);
       pointer-events: auto;
+    }
+
+    /* Rule to open contacts menu on hover */
+    .nav-item.contacts-item:hover>.mega-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .nav-item.has-mega-menu {
@@ -1265,7 +1273,7 @@
     }
 
     body.popup-open .mobile-nav-popup {
-      background-color: #0a1f3c !important;
+      background-color: rgba(0, 0, 0, 0.8) !important;
     }
 
     /* Иконки соцсетей на мобильных устройствах правее */
@@ -3046,14 +3054,50 @@
         if (firstServiceId) { showService(firstServiceId); }
       }
 
-      const megaMenuItems = document.querySelectorAll('.has-mega-menu');
+      const megaMenuItems = document.querySelectorAll('.has-mega-menu:not(.contacts-item)');
+      const contactsMenuItem = document.querySelector('.contacts-item');
+
       megaMenuItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
+        const link = item.querySelector('a');
+        link.addEventListener('click', (event) => {
+          // Для ссылок, которые должны куда-то вести, можно добавить проверку
+          // if (link.getAttribute('href') === '#') { 
+          event.preventDefault();
+          // }
+
+          // Закрыть все другие открытые мега-меню
+          megaMenuItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('mega-menu-active');
+              document.body.classList.remove('mega-menu-open');
+            }
+          });
+
+          // Открыть/закрыть текущее меню
+          item.classList.toggle('mega-menu-active');
+          document.body.classList.toggle('mega-menu-open');
+
+          event.stopPropagation();
+        });
+      });
+
+      // Логика для открытия/закрытия меню контактов при наведении
+      if (contactsMenuItem) {
+        contactsMenuItem.addEventListener('mouseenter', () => {
           document.body.classList.add('mega-menu-open');
         });
-        item.addEventListener('mouseleave', () => {
+        contactsMenuItem.addEventListener('mouseleave', () => {
           document.body.classList.remove('mega-menu-open');
         });
+      }
+
+      // Закрытие меню при клике вне его
+      document.addEventListener('click', (event) => {
+        const openMenu = document.querySelector('.has-mega-menu.mega-menu-active');
+        if (openMenu && !openMenu.contains(event.target)) {
+          openMenu.classList.remove('mega-menu-active');
+          document.body.classList.remove('mega-menu-open');
+        }
       });
 
       // License Mega Menu Logic
