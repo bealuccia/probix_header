@@ -361,7 +361,8 @@
       pointer-events: none;
       transition: all 0.3s ease;
       font-size: 16px;
-      /* Slightly reduced font size */
+      max-height: 85vh; /* Limit height to 85% of the viewport height */
+      overflow-y: auto;   /* Add scroll if content overflows */
     }
 
     .nav-item.has-mega-menu.mega-menu-active>.mega-menu,
@@ -3377,15 +3378,30 @@
         updateArrows();
         new ResizeObserver(updateArrows).observe(container);
         container.addEventListener('scroll', updateArrows);
-      }// Prevent page scroll when scrolling inside mega menus
-      const scrollableMegaMenuAreas = document.querySelectorAll('.service-details, .case-details, .license-card .features, .services-menu-main');
-      scrollableMegaMenuAreas.forEach(element => {
-        element.addEventListener('wheel', function (event) {
-          if (element.scrollHeight <= element.clientHeight) { return; } const isScrollingDown = event.deltaY > 0;
+      }
+
+      // Smart scroll for mega menus
+      const megaMenus = document.querySelectorAll('.mega-menu');
+      megaMenus.forEach(menu => {
+        menu.addEventListener('wheel', function(event) {
+          // If the menu content is smaller than its container, prevent scrolling
+          if (this.scrollHeight <= this.clientHeight) {
+            event.preventDefault();
+            return;
+          }
+
+          const isScrollingDown = event.deltaY > 0;
           const isScrollingUp = event.deltaY < 0;
-          const atBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 1;
-          const atTop = element.scrollTop < 1;
-          if ((isScrollingDown && atBottom) || (isScrollingUp && atTop)) { event.preventDefault(); } event.stopPropagation();
+          // Check if we are at the very bottom of the scroll
+          const atBottom = this.scrollHeight - this.scrollTop - this.clientHeight < 1;
+          // Check if we are at the very top of the scroll
+          const atTop = this.scrollTop < 1;
+
+          if ((isScrollingDown && atBottom) || (isScrollingUp && atTop)) {
+            event.preventDefault();
+          }
+          // Allow the event to propagate within the menu otherwise
+          event.stopPropagation();
         });
       });
 
