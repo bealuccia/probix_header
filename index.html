@@ -1662,6 +1662,11 @@
   </style>
 
   <style>
+    /* Стили для блокировки скролла */
+    body.body--lock {
+      overflow: hidden !important;
+    }
+
     /* Единые стили Open Sans */
     .site-header,
     .mega-menu,
@@ -3506,6 +3511,49 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       showService('bitrix24-licenses');
+    });
+  </script>
+  <script>
+    // Этот скрипт исправляет поведение мега-меню и проблему с прокруткой.
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('.site-header');
+      const menuItems = document.querySelectorAll('.has-mega-menu, .contacts-item');
+      const body = document.body;
+
+      // Функция для закрытия всех открытых мега-меню
+      const closeAllMegaMenus = () => {
+        document.querySelectorAll('.mega-menu-active, .mm-active').forEach(item => {
+          item.classList.remove('mega-menu-active', 'mm-active');
+        });
+        // Разблокируем прокрутку страницы
+        body.classList.remove('body--lock');
+      };
+
+      menuItems.forEach(item => {
+        // Открываем меню при наведении мыши
+        item.addEventListener('mouseenter', () => {
+          // Сначала закрываем все остальные меню, чтобы не было наложений
+          closeAllMegaMenus();
+          // Открываем текущее меню
+          item.classList.add(item.classList.contains('contacts-item') ? 'mm-active' : 'mega-menu-active');
+          // Блокируем прокрутку основной страницы
+          body.classList.add('body--lock');
+        });
+      });
+
+      // Когда курсор покидает всю область хедера, закрываем меню
+      if (header) {
+        header.addEventListener('mouseleave', () => {
+          closeAllMegaMenus();
+        });
+      }
+
+      // Дополнительно: закрываем меню при клике вне его области
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.site-header')) {
+          closeAllMegaMenus();
+        }
+      });
     });
   </script>
 </body>
